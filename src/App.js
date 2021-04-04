@@ -3,6 +3,7 @@ import './App.css';
 import FeedbackOptions from './Component/FeedbackOptions/FeedbackOptions';
 import Statistics from './Component/Statistics/Statistics';
 import Section from './Component/Section/Section';
+import Notification from './Component/FeedbackOptions/Notification';
 
 class App extends Component {
   static defaultProps = {
@@ -37,6 +38,7 @@ class App extends Component {
     const { good } = this.state;
     const { neutral } = this.state;
     const { bad } = this.state;
+    let isTotal = this.positivePercentag();
 
     return (
       <div className="App">
@@ -44,15 +46,21 @@ class App extends Component {
           <FeedbackOptions options={this.state} />
           onLeaveFeedback={this.feedbackCounter}
         </Section>
-        <Section title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback}
-            positivePercentage={this.countPositiveFeedbackPercentage}
-          ></Statistics>
-        </Section>
+        <div>
+          {Number.isFinite(isTotal) ? (
+            <Section title="Statistic">
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                total={this.countTotalFeedback}
+                positivePercentage={this.positivePercentag}
+              />
+            </Section>
+          ) : (
+            <Notification message={'No feedback given'} />
+          )}
+        </div>
       </div>
     );
   }

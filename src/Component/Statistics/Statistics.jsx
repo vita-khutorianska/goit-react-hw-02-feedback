@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from '../Feedback/feedBack.module.css';
+import styles from './Statistics.module.css';
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <div className={styles.btn__container}>

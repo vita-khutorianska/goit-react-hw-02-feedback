@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import FeedbackOptions from './Component/FeedbackOptions/FeedbackOptions';
 import Statistics from './Component/Statistics/Statistics';
+import Section from './Component/Section/Section';
+
 class App extends Component {
   static defaultProps = {
     initialValue: 0,
@@ -32,15 +34,22 @@ class App extends Component {
   };
 
   render() {
-    const { state } = this.state;
+    const { good } = this.state;
+    const { neutral } = this.state;
+    const { bad } = this.state;
 
     return (
       <div className="App">
+        <Section title="Please leave Feedback" />
         <FeedbackOptions options={this.state} />
         onLeaveFeedback={this.feedbackCounter}
-      </div>
-      <div>
-        <Statistics good={} neutral={} bad={} total={} positivePercentage={}></Statistics>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback}
+          positivePercentage={this.countPositiveFeedbackPercentage}
+        ></Statistics>
       </div>
     );
   }

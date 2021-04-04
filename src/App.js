@@ -40,16 +40,19 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Section title="Please leave Feedback" />
-        <FeedbackOptions options={this.state} />
-        onLeaveFeedback={this.feedbackCounter}
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback}
-          positivePercentage={this.countPositiveFeedbackPercentage}
-        ></Statistics>
+        <Section title="Please leave Feedback">
+          <FeedbackOptions options={this.state} />
+          onLeaveFeedback={this.feedbackCounter}
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
+          ></Statistics>
+        </Section>
       </div>
     );
   }

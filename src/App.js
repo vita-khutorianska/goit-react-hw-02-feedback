@@ -12,6 +12,13 @@ class App extends Component {
     neutral: this.props.initialValue,
     bad: this.props.initialValue,
   };
+  feedbackCounter = e => {
+    this.state(preState => {
+      return {
+        [e]: preState[e] + 1,
+      };
+    });
+  };
   render() {
     return (
       <div className="App">

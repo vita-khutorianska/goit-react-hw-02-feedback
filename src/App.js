@@ -9,7 +9,7 @@ class App extends Component {
   static defaultProps = {
     initialValue: 0,
   };
-  // eslint-disable-next-line no-undef
+
   state = {
     good: this.props.initialValue,
     neutral: this.props.initialValue,
@@ -38,13 +38,15 @@ class App extends Component {
     const { good } = this.state;
     const { neutral } = this.state;
     const { bad } = this.state;
-    let isTotal = this.positivePercentag();
+    let isTotal = this.countPositiveFeedbackPercentage();
 
     return (
       <div className="App">
         <Section title="Please leave Feedback">
-          <FeedbackOptions options={this.state} />
-          onLeaveFeedback={this.feedbackCounter}
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.feedbackCounter}
+          />
         </Section>
         <div>
           {Number.isFinite(isTotal) ? (
@@ -54,11 +56,11 @@ class App extends Component {
                 neutral={neutral}
                 bad={bad}
                 total={this.countTotalFeedback}
-                positivePercentage={this.positivePercentag}
+                positivePercentage={this.countPositiveFeedbackPercentage}
               />
             </Section>
           ) : (
-            <Notification message={'No feedback given'} />
+            <Notification message="No feedback given" />
           )}
         </div>
       </div>

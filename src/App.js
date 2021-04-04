@@ -1,18 +1,24 @@
+import React, { Component } from 'react';
 import './App.css';
-import FeedbackOptions from './Component/FeedbackOptions';
+import FeedbackOptions from './Component/FeedbackOptions/FeedbackOptions';
 
-function App() {
+class App extends Component {
+  static defaultProps = {
+    initialValue: 0,
+  };
   // eslint-disable-next-line no-undef
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    good: this.props.initialValue,
+    neutral: this.props.initialValue,
+    bad: this.props.initialValue,
   };
-  return (
-    <div className="App">
-      <FeedbackOptions></FeedbackOptions>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <FeedbackOptions />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
+
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div className={styles.btn__section}>
@@ -16,5 +17,11 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
       ))}
     </div>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.shape({
+    onLeaveFeedback: PropTypes.func,
+  }).isRequired,
 };
 export default FeedbackOptions;

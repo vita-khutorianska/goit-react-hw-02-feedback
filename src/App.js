@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import FeedbackOptions from './Component/FeedbackOptions/FeedbackOptions';
-import Statistics from './Component/Statistics/Statistics';
+import FeedbackOptions from './Component/FeedbackOptions';
+import Statistics from './Component/Statistics';
 import Section from './Component/Section/Section';
 import Notification from './Component/FeedbackOptions/Notification';
 
@@ -16,7 +16,7 @@ class App extends Component {
     bad: this.props.initialValue,
   };
   feedbackCounter = e => {
-    this.state(preState => {
+    this.setState(preState => {
       return {
         [e]: preState[e] + 1,
       };
